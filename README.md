@@ -1,23 +1,15 @@
-# 022 Pseudo Classes
+# 023 Navigation Bar
 
-[![022 Pseudo Classes](https://img.youtube.com/vi/L-Xc-SdaNjs/0.jpg)](https://www.youtube.com/watch?v=L-Xc-SdaNjs)
+[![023 Navigation Bar](https://img.youtube.com/vi/yhgf1WHDuDY/0.jpg)](https://www.youtube.com/watch?v=yhgf1WHDuDY)
 
 The `index.html` file
-- should add styling so that hovering over the anchor will turn the anchor text orange
-- should add styling so that initially the paragraph tooltip is not visible
-- should add styling so that hovering over the "Hover over me." text will display the paragraph tooltip
+- should add styling so that the list is not indented
+- should add styling so that the list is not padded
+- should add styling so that the list does not have bullet points
+- should add styling so that the anchors are padded with 10px
+- should add styling so that the anchors are not underlined
+- should add styling so that the anchors have black text
 
 Resources:
-- https://www.w3schools.com/css/css_pseudo_classes.asp
-
-
-Add styling so that:
-
-hovering over the anchor will turn the anchor text purple
-
-initially the paragraph tooltip is not visible
-
-hovering over the "Hover over me." text will display the paragraph tooltip
-
-Resources:
-
+- https://www.w3schools.com/css/css_navbar.asp
+- https://www.w3schools.com/css/css_navbar_vertical.asp

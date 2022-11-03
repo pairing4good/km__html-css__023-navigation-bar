@@ -37,33 +37,66 @@ afterEach(async () => {
   await browser.close();
 });
 
-describe('hovering over the anchor', () => {
-  it('should turn the anchor text purple', async () => {
-    const matches = await page.$eval('style', (style) => {
-      return style.innerHTML.match(/a:hover.*{[\s\S][^}]*color.*:.*purple.*;/g).length;
-    });
-    
-    expect(matches).toEqual(1);
-  });
-});
-
-describe('initially the paragraph tooltip', () => {
-  it('should not be visible', async () => {
-    const display = await page.$eval('div p', (paragraph) => {
-      let style = window.getComputedStyle(paragraph);
-      return style.getPropertyValue('display');
+describe('the list', () => {
+  it('should not be indented', async () => {
+    const value = await page.$eval('ul', (list) => {
+      let listStyle = window.getComputedStyle(list);
+      return listStyle.getPropertyValue('margin');
     });
       
-    expect(display).toBe('none');
+    expect(value).toBe('0px');
+  });
+  
+  it('should not be padded', async () => {
+    const value = await page.$eval('ul', (list) => {
+      let listStyle = window.getComputedStyle(list);
+      return listStyle.getPropertyValue('padding');
+    });
+    
+    expect(value).toBe('0px');
+  });
+  
+  it('should not have bullet points', async () => {
+    const value = await page.$eval('ul', (list) => {
+      let listStyle = window.getComputedStyle(list);
+      return listStyle.getPropertyValue('list-style-type');
+    });
+      
+    expect(value).toBe('none');
   });
 });
 
-describe('hovering over the "Hover over me." text', () => {
-  it('should display the paragraph tooltip', async () => {
-    const matches = await page.$eval('style', (style) => {
-      return style.innerHTML.match(/div:hover.*p {[\s\S][^}]*display.*:.*inline.*;/g).length;
+describe('the anchors', () => {
+  it('should be padded with 10px', async () => {
+    const display = await page.$eval('a', (anchor) => {
+      let listStyle = window.getComputedStyle(anchor);
+      return listStyle.getPropertyValue('display');
     });
-    
-    expect(matches).toEqual(1);
+
+    const padding = await page.$eval('a', (anchor) => {
+      let listStyle = window.getComputedStyle(anchor);
+      return listStyle.getPropertyValue('padding');
+    });
+      
+    expect(display).toBe('block');
+    expect(padding).toBe('10px');
+  });
+  
+  it('should not be underlined', async () => {
+    const value = await page.$eval('a', (anchor) => {
+      let listStyle = window.getComputedStyle(anchor);
+      return listStyle.getPropertyValue('text-decoration');
+    });
+      
+    expect(value).toContain('none');
+  });
+  
+  it('should have black text', async () => {
+    const value = await page.$eval('a', (anchor) => {
+      let listStyle = window.getComputedStyle(anchor);
+      return listStyle.getPropertyValue('color');
+    });
+      
+    expect(value).toBe('rgb(0, 0, 0)');
   });
 });
